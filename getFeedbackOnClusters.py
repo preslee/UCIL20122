@@ -24,11 +24,11 @@ class getFeedbackOnClusters:
         else:
             print("\N{Cross Mark} I'm afraid you are wrong. Generally, rugby players are heavier and smaller than ballet dancers.")
         
-        rugbyHeights = [150, 145, 130, 163, 171]
-        rugbyWeights = [85, 93, 75, 99, 100]
+        rugbyHeights = [150, 145, 130, 163, 171, 168]
+        rugbyWeights = [85, 93, 75, 99, 100, 84]
         
-        balletHeights = [190, 185, 202, 180, 174]
-        balletWeights = [63, 55, 75, 50, 57]
+        balletHeights = [190, 185, 202, 180, 174, 174]
+        balletWeights = [63, 55, 75, 50, 57, 66]
 
         plt.scatter(rugbyHeights, rugbyWeights, color = 'red', marker = '^')
         plt.scatter(balletHeights, balletWeights, color = 'blue')
