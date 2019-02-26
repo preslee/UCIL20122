@@ -31,7 +31,7 @@ class getFeedbackOnFeatureSelection:
             print("\N{Cross Mark} In this case, the age is not really an indicator as more rugby players and ballet dancers have the same age.")
 
         if 'Sex' in WidgetObject.getFeatureValues():
-            print("\N{Cross Mark} Sex is not a good indicator as both rugby and ballet are practiced by men and women.")
+            print("\N{Cross Mark} Even though in our data the majority of rugby players are men and the most of the ballet dancers are women, it's not fair to assume that the gender is distinguishing as both men and women can practice each of these activities.")
 
         if 'Name' in WidgetObject.getFeatureValues():
             print("\N{Cross Mark} The name is irrelevant as it does't give any clue about a person.")
