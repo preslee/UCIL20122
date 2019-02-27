@@ -2,7 +2,7 @@
 from numpy import *
 import matplotlib.pyplot as plt
 from IPython.display import display
-from Widget import *
+from SelectionWidget import *
 
 class getFeedbackOnClusters:
     #The object takes a Widget object as argument

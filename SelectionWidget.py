@@ -1,14 +1,15 @@
-# Create an instance of Widget
+# Create an instance of SelectionWidget
 # The WidgetOptions variable should be an array of options
 
 import ipywidgets as widgets
 
-class Widget:
+class SelectionWidget:
     def __init__(self, WidgetOptions, WidgetDescription):
         self.WidgetOptions = WidgetOptions
         self.WidgetDescription = WidgetDescription
+        
     
-    #Create a Widget to select multiple options
+    #Create a SelectionWidget to select multiple options
     def createSelectMultiple(self):
         self.features = widgets.SelectMultiple(
             options = self.WidgetOptions,
@@ -16,7 +17,7 @@ class Widget:
             disabled = False
         )
         
-    #Create a Widget to select one single option
+    #Create a SelectionWidget to select one single option
     def createSelectSingle(self):
         self.features = widgets.Select(
             options = self.WidgetOptions,

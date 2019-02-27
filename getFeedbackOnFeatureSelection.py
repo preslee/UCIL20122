@@ -1,9 +1,9 @@
 #This class generates feedback on the feature selection question
 from IPython.display import display
-from Widget import *
+from SelectionWidget import *
 
 class getFeedbackOnFeatureSelection:
-    #The object takes a Widget object as argument
+    #The object takes a SelectionWidget object as argument
     def __init__(self, WidgetObject):
         self.WidgetObject = WidgetObject
     
@@ -15,7 +15,7 @@ class getFeedbackOnFeatureSelection:
     def displayButton(self):
         display(self.button)
         
-    #Analyse and print the results from Widget
+    #Analyse and print the results from SelectionWidget
     def printFeedback(self, WidgetObject):
         if 'Height' in WidgetObject.getFeatureValues():
             print("\N{Heavy Check Mark} The height is a distinguishing measurement as normally ballet dancers are taller than rugby players.")
