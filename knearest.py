@@ -1,50 +1,56 @@
-#This class generate a prediction based on KNN algorithm
+#This class makes predictions based on KNearest for 2 features
+import numpy as np
 from numpy import *
 from IPython.display import display
-from Widget import *
+from InputWidget import *
+import math
 
 class knearest:
-    #The object takes a Widget object as argument
-    def __init__(self, WidgetObject):
-        self.WidgetObject = WidgetObject
+    #The object takes two InputWidget objects as arguments and a training matrix
+    def __init__(self, InputWidgetObject1, InputWidgetObject2, inputTrainingMatrix):
+        self.InputWidgetObject1 = InputWidgetObject1
+        self.InputWidgetObject2 = InputWidgetObject2
+        self.inputTrainingMatrix = inputTrainingMatrix
+        self.distances = np.empty([0,2])
     
-    #Create the feedback button
+    #Create the button
     def createButton(self, buttonName):
         self.button = widgets.Button(description = buttonName)
         
-    #Create int input box for height
-    def createHeightBox(self, boxName):
-        self.intBox = widgets.BoundedIntText(value=100, min=100, max=250, step=1, description='Height (cm):',disabled=False)
-
-    #Create int input box for weight
-    def createWeightBox(self, boxName):
-        self.intBox = widgets.BoundedIntText(value=30, min=30, max=150, step=1, description='Weight (kg):',disabled=False)
-
     #Display the button on the screen
     def displayButton(self):
         display(self.button)
-
-    #Display the box on the screen
-    def displayBox(self):
-        display(self.intBox)
         
-    #Analyse and print the results from Widget
-    def printFeedback(self, WidgetObject):
-        if 'Top-left' in WidgetObject.getFeatureValues():
-            print("\N{Heavy Check Mark} Your answer is correct. Generally, rugby players are heavier and smaller than ballet dancers.")
+        
+    #Find the k-nearest neighbours
+    def getLabel(self, k):
+        
+        #Calculate the distances
+        for trainingPoint in self.inputTrainingMatrix:
+            distance = math.sqrt((trainingPoint[0] - InputWidgetObject1.getValue())**2 + (trainingPoint[1] - InputWidgetObject2.getValue())**2)
+            self.distances = np.vstack([self.distances, [distance, trainingPoint[2]]])
+            
+        #Sort the distances    
+        distances = distances[distances[:,0].argsort()]
+
+        classOne = 0
+        classTwo = 0
+
+        for i in range(0, int(len(heights)/2)):
+            if distances[i][1] == 1:
+                classOne = classOne + 1
+            else:
+                classTwo = classTwo + 1
+
+        if classOne > classTwo:
+            return 1
         else:
-            print("\N{Cross Mark} I'm afraid you are wrong. Generally, rugby players are heavier and smaller than ballet dancers.")
-        
-        rugbyHeights = [150, 145, 130, 163, 171, 168]
-        rugbyWeights = [85, 93, 75, 99, 100, 84]
-        
-        balletHeights = [190, 185, 202, 180, 174, 174]
-        balletWeights = [63, 55, 75, 50, 57, 66]
-
-        plt.scatter(rugbyHeights, rugbyWeights, color = 'red', marker = '^')
-        plt.scatter(balletHeights, balletWeights, color = 'blue')
-        plt.title("Data distribution on heights and weights")
-        plt.xlabel("Height")
-        plt.ylabel("Weight")
-        plt.show()
-
+            return 2
+            
+    
+    #Print the results
+    def printPrediction(self, classOneName, classTwoName, k):
+        if self.getLabel(k) == 1:
+            print (classOneName)
+        else:
+            print (classTwoName)

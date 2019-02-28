@@ -13,7 +13,7 @@ class InputWidget:
     
     #Create a float type inputWidget
     def createFloatInputWidget(self):
-        self.floatValue = widgets.BoundedFloatText(
+        self.features = widgets.BoundedFloatText(
             value = self.defaultValue,
             min = self.minValue,
             max = self.maxValue,
@@ -24,7 +24,7 @@ class InputWidget:
         
     #Create an int type inputWidget
     def createIntInputWidget(self):
-        self.intValue = widgets.BoundedIntText(
+        self.features = widgets.BoundedIntText(
             value = self.defaultValue,
             min = self.minValue,
             max = self.maxValue,
@@ -32,8 +32,11 @@ class InputWidget:
             description = self.inputName,
             disabled = False
         )
-        
+    
+    #Return the value in the box
+    def getValue(self):
+        return self.features.value
     
     #Display the inputWidget on the screen
     def displayInputWidget(self):
-        display(self)
+        display(self.features)
