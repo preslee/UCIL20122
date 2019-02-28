@@ -31,7 +31,7 @@ class knearest:
             self.distances = np.vstack([self.distances, [distance, trainingPoint[2]]])
             
         #Sort the distances    
-        distances = distances[distances[:,0].argsort()]
+        self.distances = distances[distances[:,0].argsort()]
 
         classOne = 0
         classTwo = 0
