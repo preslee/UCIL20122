@@ -27,7 +27,7 @@ class knearest:
         
         #Calculate the distances
         for trainingPoint in self.inputTrainingMatrix:
-            distance = math.sqrt((trainingPoint[0] - InputWidgetObject1.getValue())**2 + (trainingPoint[1] - InputWidgetObject2.getValue())**2)
+            distance = math.sqrt((trainingPoint[0] - self.InputWidgetObject1.getValue())**2 + (trainingPoint[1] - self.InputWidgetObject2.getValue())**2)
             self.distances = np.vstack([self.distances, [distance, trainingPoint[2]]])
             
         #Sort the distances    
