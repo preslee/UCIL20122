@@ -36,7 +36,7 @@ class knearest:
         classOne = 0
         classTwo = 0
 
-        for i in range(0, int(len(heights)/2)):
+        for i in range(0, k):
             if self.distances[i][1] == 1:
                 classOne = classOne + 1
             else:
