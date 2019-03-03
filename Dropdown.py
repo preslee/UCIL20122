@@ -18,7 +18,7 @@ class Dropdown:
     
     
     #Return the array of the selected value
-    def getFeatureValues(self):
+    def getValue(self):
         return self.features.value
     
     #Return the array of options
